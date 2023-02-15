@@ -1,0 +1,1 @@
+## Generate Type definitions from Graphql schema
