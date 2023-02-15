@@ -1,25 +1,24 @@
-import casual from 'casual';
+import casual from "casual";
+import { User } from "../../../core/src/__generated__/server/resolvers-types";
 
-casual.define('user', function () {
-    return {
-        emailAddress: casual.email,
-        fullName: casual.full_name,
-        address: casual.address,
-        phoneNumber: casual.phone,
-        hash: casual.uuid
-    };
+casual.define("user", function () {
+  return {
+    emailAddress: casual.email,
+    fullName: casual.full_name,
+    address: casual.address,
+    phoneNumber: casual.phone,
+    hash: casual.uuid,
+  };
 });
 
-const array_of = function (times: number, generator: GeneratorFunction) {
-    var result = [];
+const array_of = function (times: number, generator: () => User): User[] {
+  var result: User[] = [];
 
-    for (var i = 0; i < times; ++i) {
-        result.push(generator());
-    }
+  for (var i = 0; i < times; ++i) {
+    result.push(generator());
+  }
 
-    return result;
+  return result;
 };
 
-const userList = array_of(2000, (casual as any)._user);
-
-console.log(userList);
+export const userList: User[] = array_of(2000, (casual as any)._user);

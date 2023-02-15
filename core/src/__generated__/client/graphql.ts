@@ -48,4 +48,5 @@ export type User = {
   emailAddress: Scalars['String'];
   fullName: Scalars['String'];
   phoneNumber: Scalars['String'];
+  uuid: Scalars['String'];
 };

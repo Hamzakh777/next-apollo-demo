@@ -3,6 +3,7 @@ type User {
   address: String!
   phoneNumber: String!
   emailAddress: String!
+  uuid: String!
 }
 type Edge {
   cursor: String
