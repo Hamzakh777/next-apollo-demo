@@ -3,6 +3,7 @@ import { BaseButton } from "components/Base";
 import { Card } from "components/Card";
 import { useCallback } from "react";
 import { StyledButtonWrapper, StyledItems } from "./List.styles";
+import { Query } from "../../../core/src/__generated__/client/graphql";
 
 interface ListProps {}
 
@@ -27,38 +28,40 @@ const GET_USERS = gql(`
 `);
 
 export const List = () => {
-  const { loading, data, fetchMore } = useQuery(
-    GET_USERS as any,
-    // variables are also typed!
-    { 
-        variables: { first: 20 },
-        notifyOnNetworkStatusChange: true, 
-    }
-  );
+  const { loading, data, fetchMore } = useQuery<Query>(GET_USERS, {
+    variables: { first: 20 },
+    notifyOnNetworkStatusChange: true,
+  });
 
-  const handleLoadMore = useCallback(() => {
+  const handleLoadMore = () => {
     fetchMore({
-        variables: {
-            first: 20,
-            after: data.users.pageInfo.endCursor,
-        },
-    })
-  }, [])
+      variables: {
+        first: 20,
+        after: data?.users?.pageInfo?.endCursor,
+      },
+    });
+  };
+
+  console.log(data);
+  
+
+  const isNextPageAvailable = data?.users?.pageInfo?.hasNextPage;
 
   return (
     <div>
       <StyledItems>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        {!!data &&
+          !!data.users &&
+          !!data.users.edges &&
+          data?.users?.edges.map(
+            (item) =>
+              item?.node && <Card user={item.node} key={item.node.uuid} />
+          )}
       </StyledItems>
       <StyledButtonWrapper>
-        <BaseButton>
-            Load More
-        </BaseButton>
+        {isNextPageAvailable && (
+          <BaseButton onClick={handleLoadMore} disabled={loading}>Load More</BaseButton>
+        )}
       </StyledButtonWrapper>
     </div>
   );

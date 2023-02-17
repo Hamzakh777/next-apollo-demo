@@ -7,8 +7,8 @@ casual.define("user", function () {
     fullName: casual.full_name,
     address: casual.address,
     phoneNumber: casual.phone,
-    hash: casual.uuid,
-  };
+    uuid: casual.uuid,
+  } as User;
 });
 
 const array_of = function (times: number, generator: () => User): User[] {

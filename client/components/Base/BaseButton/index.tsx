@@ -3,8 +3,10 @@ import { StyledButton } from "./BaseButton.styles";
 
 interface BaseButtonProps {
   children: ReactNode;
+  onClick: () => void
+  disabled?: boolean
 }
 
-export const BaseButton = ({ children }: BaseButtonProps) => {
-  return <StyledButton>{children}</StyledButton>;
+export const BaseButton = ({ children, onClick, disabled = false }: BaseButtonProps) => {
+  return <StyledButton onClick={onClick} disabled={disabled}>{children}</StyledButton>;
 };
