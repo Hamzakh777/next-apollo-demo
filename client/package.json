@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "next"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "cypress": "cypress open"
   },
   "license": "MIT",
   "dependencies": {
@@ -15,6 +18,7 @@
     "@types/styled-components": "^5.1.26",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
+    "cypress": "^12.5.1",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "next": "^13.1.6",
