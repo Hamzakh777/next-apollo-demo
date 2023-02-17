@@ -12,9 +12,9 @@ casual.define("user", function () {
 });
 
 const array_of = function (times: number, generator: () => User): User[] {
-  var result: User[] = [];
+  const result: User[] = [];
 
-  for (var i = 0; i < times; ++i) {
+  for (let i = 0; i < times; ++i) {
     result.push(generator());
   }
 
