@@ -11,7 +11,7 @@ interface CardProps {
 
 export const Card = ({ user }: CardProps) => {
   return (
-    <StyledCard>
+    <StyledCard className="card">
       <StyledCardBorderTop />
       <StyledCardImage />
       <span>{user.fullName}</span>
