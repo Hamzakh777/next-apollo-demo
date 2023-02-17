@@ -18,6 +18,14 @@ export const StyledCard = styled.div`
     padding-top: 10px;
     font-size: 16px;
   }
+
+  @media (max-width: 756px) {
+    width: 100%;
+  }
+
+  @media (max-width: 968px) {
+    width: 48%;
+  }
 `;
 
 export const StyledCardBorderTop = styled.div`
