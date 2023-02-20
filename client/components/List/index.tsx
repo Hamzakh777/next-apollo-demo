@@ -41,10 +41,7 @@ export const List = () => {
       },
     });
   };
-
-  console.log(data);
   
-
   const isNextPageAvailable = data?.users?.pageInfo?.hasNextPage;
 
   return (
@@ -54,8 +51,8 @@ export const List = () => {
           !!data.users &&
           !!data.users.edges &&
           data?.users?.edges.map(
-            (item) =>
-              item?.node && <Card user={item.node} key={item.node.uuid} />
+            (item, index) =>
+              <Card user={item!.node as any} key={index} />
           )}
       </StyledItems>
       <StyledButtonWrapper>
