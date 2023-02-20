@@ -1,3 +1,4 @@
+![App demo](./assets/demo.png)
 ## Prerequisite
 You need to have node installed on your machine and/or Docker.
 ## Running the project without Docker
