@@ -9,6 +9,7 @@ You'll need two terminals
 ## Running the project with Docker
 From the root folder run 
 `docker-compose up`
+Currently its not working because the Core package exists outside the Client/Server folders.
 
 ## Generate Type definitions from Graphql schema
 I added a centralized **Core** package that generates Type definitions from 
